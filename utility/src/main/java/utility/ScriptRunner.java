@@ -1,6 +1,6 @@
 package utility;
 
-import java.io.File;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,6 +10,10 @@ import java.util.Scanner;
 public class ScriptRunner {
 
     public static void run(String jdbcUrl, String scriptPath) {
+        run(jdbcUrl, scriptPath, "--");
+    }
+
+    public static void run(String jdbcUrl, String scriptPath, String delimiter) {
 
         Connection connection = null;
         Statement stmt;
@@ -19,10 +23,11 @@ public class ScriptRunner {
             connection = DriverManager.getConnection(jdbcUrl);
             stmt = connection.createStatement();
 
-            scanner = new Scanner(new File(scriptPath));
+            InputStream resourceAsStream = ScriptRunner.class.getClassLoader().getResourceAsStream(scriptPath);
+            scanner = new Scanner(resourceAsStream);
             String content = scanner.useDelimiter("\\Z").next();
 
-            String[] split = content.split(";;");
+            String[] split = content.split(delimiter);
 
             for (String sql : split) {
                 try {

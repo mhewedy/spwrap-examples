@@ -1,7 +1,12 @@
-drop procedure SHOW_SUPPLIERS;
+drop procedure LIST_COFFEE_NAMES;
+--
+drop procedure SHOW_COFFEE_SUPPLIERS;
+--
 drop procedure GET_SUPPLIER_OF_COFFEE;
+--
 drop procedure RAISE_PRICE;
-
-DROP TABLE COFFEES;
-DROP TABLE SUPPLIERS;
-;;
+--
+drop table COFFEES;
+--
+drop table SUPPLIERS;
+--

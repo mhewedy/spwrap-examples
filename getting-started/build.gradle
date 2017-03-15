@@ -10,5 +10,9 @@ repositories {
 }
 
 dependencies {
+    compile project(':utility')
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.24'
+    compile group: 'com.github.mhewedy', name: 'spwrap', version: '0.0.17'
+    runtime group: 'mysql', name: 'mysql-connector-java', version: '5.1.34'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
