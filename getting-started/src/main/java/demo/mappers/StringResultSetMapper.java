@@ -1,4 +1,4 @@
-package demo;
+package demo.mappers;
 
 import spwrap.mappers.ResultSetMapper;
 import spwrap.result.Result;

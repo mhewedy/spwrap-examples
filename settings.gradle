@@ -1,4 +1,5 @@
 rootProject.name = 'parent'
 include 'getting-started'
 include 'utility'
+include 'spring-boot'
 

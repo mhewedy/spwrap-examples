@@ -9,9 +9,7 @@ import spwrap.annotations.StoredProc;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static java.sql.Types.FLOAT;
-import static java.sql.Types.NUMERIC;
-import static java.sql.Types.VARCHAR;
+import static java.sql.Types.*;
 
 public interface CoffeeDAO {
 
