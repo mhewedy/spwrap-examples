@@ -1,4 +1,4 @@
-* getting-strated => mysql - standalone - mapper & scalar <Done>
+* getting-started => mysql - standalone - mapper & scalar <Done>
 * mysql - spring boot - mapper & scalar
 * mysql - spring boot - automapper & scalar
 * mysql - guava - mapper & scalar
