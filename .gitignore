@@ -7,3 +7,4 @@
 target/
 coverage-error.log
 */build/*
+.gradle/2.13/taskArtifacts/*
