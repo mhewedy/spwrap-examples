@@ -15,18 +15,18 @@ import static java.sql.Types.VARCHAR;
 public interface CoffeeDAO {
 
     @Mapper(StringResultSetMapper.class)
-    @StoredProc("LIST_COFFEE_NAMES")
+    @StoredProc("list_coffee_names")
     List<String> listCoffeeNames();
 
-    @StoredProc("SHOW_COFFEE_SUPPLIERS")
+    @StoredProc("show_coffee_suppliers")
     List<Supplier> showCoffeeSuppliers();
 
     @Scalar(VARCHAR)
-    @StoredProc("GET_SUPPLIER_OF_COFFEE")
+    @StoredProc("get_supplier_of_coffee")
     String getSupplier(@Param(VARCHAR) String coffeeName);
 
     @Scalar(NUMERIC)
-    @StoredProc("RAISE_PRICE")
+    @StoredProc("raise_price")
     BigDecimal raisePrice(@Param(VARCHAR) String coffeeName,
                           @Param(FLOAT) float maximumPercentage,
                           @Param(NUMERIC) BigDecimal newInput);

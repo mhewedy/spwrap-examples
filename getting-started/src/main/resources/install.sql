@@ -1,86 +1,92 @@
-create table SUPPLIERS
-  (SUP_ID integer NOT NULL,
-  SUP_NAME varchar(40) NOT NULL,
-  STREET varchar(40) NOT NULL,
-  CITY varchar(20) NOT NULL,
-  STATE char(2) NOT NULL,
-  ZIP char(5),
-  PRIMARY KEY (SUP_ID));
---
 
-create table COFFEES
-  (COF_NAME varchar(32) NOT NULL,
-  SUP_ID int NOT NULL,
-  PRICE numeric(10,2) NOT NULL,
-  SALES integer NOT NULL,
-  TOTAL integer NOT NULL,
-  PRIMARY KEY (COF_NAME),
-  FOREIGN KEY (SUP_ID) REFERENCES SUPPLIERS (SUP_ID));
+drop table if exists coffees;
 --
-
-insert into SUPPLIERS values
-    (49,  'Superior Coffee', '1 Party Place', 'Mendocino', 'CA', '95460'),
-    (101, 'Acme, Inc.', '99 Market Street', 'Groundsville', 'CA', '95199'),
-    (150, 'The High Ground', '100 Coffee Lane', 'Meadows', 'CA', '93966'),
-    (456, 'Restaurant Supplies, Inc.', '200 Magnolia Street', 'Meadows', 'CA', '93966'),
-    (927, 'Professional Kitchen', '300 Daisy Avenue', 'Groundsville', 'CA', '95199');
+drop table if exists suppliers;
 --
-
-insert into COFFEES values
-    ('Colombian',          101, 7.99, 0, 0),
-    ('French_Roast',       49,  8.99, 0, 0),
-    ('Espresso',           150, 9.99, 0, 0),
-    ('Colombian_Decaf',    101, 8.99, 0, 0),
-    ('French_Roast_Decaf', 049, 9.99, 0, 0);
+create table suppliers
+  (sup_id integer not null,
+  sup_name varchar(40) not null,
+  street varchar(40) not null,
+  city varchar(20) not null,
+  state char(2) not null,
+  zip char(5),
+  primary key (sup_id));
 --
-
-create procedure LIST_COFFEE_NAMES()
+create table coffees
+  (cof_name varchar(32) not null,
+  sup_id int not null,
+  price numeric(10,2) not null,
+  sales integer not null,
+  total integer not null,
+  primary key (cof_name),
+  foreign key (sup_id) references suppliers (sup_id));
+--
+insert into suppliers values
+    (49,  'superior coffee', '1 party place', 'mendocino', 'ca', '95460'),
+    (101, 'acme, inc.', '99 market street', 'groundsville', 'ca', '95199'),
+    (150, 'the high ground', '100 coffee lane', 'meadows', 'ca', '93966'),
+    (456, 'restaurant supplies, inc.', '200 magnolia street', 'meadows', 'ca', '93966'),
+    (927, 'professional kitchen', '300 daisy avenue', 'groundsville', 'ca', '95199');
+--
+insert into coffees values
+    ('colombian',          101, 7.99, 0, 0),
+    ('french_roast',       49,  8.99, 0, 0),
+    ('espresso',           150, 9.99, 0, 0),
+    ('colombian_decaf',    101, 8.99, 0, 0),
+    ('french_roast_decaf', 049, 9.99, 0, 0);
+--
+drop procedure if exists list_coffee_names;
+--
+create procedure list_coffee_names()
 begin
-    select COF_NAME
-    from COFFEES
-    order by COF_NAME;
+    select cof_name
+    from coffees
+    order by cof_name;
 end
 --
-
-create procedure SHOW_COFFEE_SUPPLIERS()
+drop procedure if exists show_coffee_suppliers;
+--
+create procedure show_coffee_suppliers()
   begin
-    select SUPPLIERS.SUP_NAME, COFFEES.COF_NAME
-    from SUPPLIERS, COFFEES
-    where SUPPLIERS.SUP_ID = COFFEES.SUP_ID
-    order by SUP_NAME;
+    select suppliers.sup_name, coffees.cof_name
+    from suppliers, coffees
+    where suppliers.sup_id = coffees.sup_id
+    order by sup_name;
   end
 --
-
-create procedure GET_SUPPLIER_OF_COFFEE(IN coffeeName varchar(32), OUT supplierName varchar(40))
+drop procedure if exists get_supplier_of_coffee;
+--
+create procedure get_supplier_of_coffee(in coffeename varchar(32), out suppliername varchar(40))
   begin
-    select SUPPLIERS.SUP_NAME into supplierName
-      from SUPPLIERS, COFFEES
-      where SUPPLIERS.SUP_ID = COFFEES.SUP_ID
-      and coffeeName = COFFEES.COF_NAME;
-    select supplierName;
+    select suppliers.sup_name into suppliername
+      from suppliers, coffees
+      where suppliers.sup_id = coffees.sup_id
+      and coffeename = coffees.cof_name;
+    select suppliername;
   end
 --
-
-create procedure RAISE_PRICE(IN coffeeName varchar(32), IN maximumPercentage float, IN newPriceInput numeric(10,2), OUT newPriceOutput numeric(10,2))
+drop procedure if exists raise_price;
+--
+create procedure raise_price(in coffeename varchar(32), in maximumpercentage float, in newpriceinput numeric(10,2), out newpriceoutput numeric(10,2))
   begin
-    main: BEGIN
-      declare maximumNewPrice numeric(10,2);
-      declare oldPrice numeric(10,2);
-      select COFFEES.PRICE into oldPrice
-        from COFFEES
-        where COFFEES.COF_NAME = coffeeName;
-      set maximumNewPrice = oldPrice * (1 + maximumPercentage);
-      if (newPriceInput > maximumNewPrice)
-        then set newPriceOutput = maximumNewPrice;
+    main: begin
+      declare maximumnewprice numeric(10,2);
+      declare oldprice numeric(10,2);
+      select coffees.price into oldprice
+        from coffees
+        where coffees.cof_name = coffeename;
+      set maximumnewprice = oldprice * (1 + maximumpercentage);
+      if (newpriceinput > maximumnewprice)
+        then set newpriceoutput = maximumnewprice;
       end if;
-      if (newPriceOutput <= oldPrice)
-        then set newPriceOutput = oldPrice;
+      if (newpriceoutput <= oldprice)
+        then set newpriceoutput = oldprice;
         leave main;
       end if;
-      update COFFEES
-        set COFFEES.PRICE = newPriceOutput
-        where COFFEES.COF_NAME = coffeeName;
-      select newPriceOutput;
-    END main;
+      update coffees
+        set coffees.price = newpriceoutput
+        where coffees.cof_name = coffeename;
+      select newpriceoutput;
+    end main;
   end
 --
