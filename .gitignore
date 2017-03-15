@@ -6,3 +6,4 @@
 .settings/
 target/
 coverage-error.log
+*/build/*
