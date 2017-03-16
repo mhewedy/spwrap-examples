@@ -1,11 +1,10 @@
 
-| module name        		    | database           | additional framework/library  |
-| --------------------------|:-------------------| :----------------------------:|
-| getting-started    		    | mysql 			       |no				                     |
-| TBD           			      | mysql      		     |apache commons dbutil          |
-| spring-boot      			    | mysql      		     |springframework 		           |
-| spring-boot-automappers 	| mysql      		     |springframework 		           |
-| TBD 						          | oracle      		   |no 				                     |
-| TBD 						          | oracle      		   |springframework 		           |
-| TBD 						          | sqlserver          |no 				                     |
-| TBD 						          | sqlserver     	   |springframework 		           |
+| module name        		| database             | additional framework/library |
+| --------------------------|:---------------------|:----------------------------:|
+| standalone-mysql    		| mysql 			   |no				              |
+| spring-boot-mysql      	| mysql      		   |springframework 		      |
+| commons-dbutil           	| mysql      		   |apache commons dbutil         |
+| TBD 						| oracle      		   |no 				              |
+| TBD 						| oracle      		   |springframework 		      |
+| TBD 						| sqlserver            |no 				              |
+| TBD 						| sqlserver     	   |springframework 		      |

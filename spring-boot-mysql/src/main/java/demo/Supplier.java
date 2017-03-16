@@ -16,6 +16,14 @@ public class Supplier implements ResultSetMapper<Supplier> {
         this.coffeeName = coffeeName;
     }
 
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public String getCoffeeName() {
+        return coffeeName;
+    }
+
     @Override
     public Supplier map(Result<?> result) {
         return new Supplier(result.getString("SUP_NAME"), result.getString("COF_NAME"));

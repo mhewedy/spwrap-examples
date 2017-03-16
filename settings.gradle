@@ -1,6 +1,5 @@
 rootProject.name = 'parent'
-include 'getting-started'
 include 'utility'
-include 'spring-boot'
-include 'spring-boot-automappers'
+include 'standalone-mysql'
+include 'spring-boot-mysql'
 
