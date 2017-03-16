@@ -2,4 +2,5 @@ rootProject.name = 'parent'
 include 'utility'
 include 'standalone-mysql'
 include 'spring-boot-mysql'
+include 'dbutil-mysql'
 

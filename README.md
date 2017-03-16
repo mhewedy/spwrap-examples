@@ -3,7 +3,7 @@
 | --------------------------|:---------------------|:----------------------------:|
 | standalone-mysql    		| mysql 			   |no				              |
 | spring-boot-mysql      	| mysql      		   |springframework 		      |
-| commons-dbutil           	| mysql      		   |apache commons dbutil         |
+| dbutil-mysql           	| mysql      		   |apache commons dbutil         |
 | TBD 						| oracle      		   |no 				              |
 | TBD 						| oracle      		   |springframework 		      |
 | TBD 						| sqlserver            |no 				              |
