@@ -1,1 +1,0 @@
-using `spwrap` from spring-boot application and uses the auto-mapper feature based on spring-jdbc
