@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import spwrap.CallException;
+import spwrap.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import static demo.Util.getOrclResultCode;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.ResponseEntity.ok;
@@ -42,13 +42,11 @@ public class CoffeeController {
         try {
             return ok(coffeeDAO.getSupplier(coffeeName));
         } catch (CallException ex) {
-            if (((SQLException) ex.getCause()).getErrorCode() == ORCL_NO_DATA_FOUND) {
+            if (getOrclResultCode(ex) == ORCL_NO_DATA_FOUND) {
                 return status(NOT_FOUND).body("Not Found!");
             } else {
                 return status(INTERNAL_SERVER_ERROR).body(ex.getMessage());
             }
-
-
         }
     }
 }
