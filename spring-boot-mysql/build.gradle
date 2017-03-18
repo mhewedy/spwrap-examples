@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.github.mhewedy', name: 'spwrap', version: '0.0.17'
+    compile group: 'com.github.mhewedy', name: 'spwrap', version: '0.0.18'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
     compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
