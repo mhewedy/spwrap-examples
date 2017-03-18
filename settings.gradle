@@ -1,4 +1,4 @@
-rootProject.name = 'parent'
+rootProject.name = 'spwrap-examples'
 include 'utility'
 include 'standalone-mysql'
 include 'spring-boot-mysql'
