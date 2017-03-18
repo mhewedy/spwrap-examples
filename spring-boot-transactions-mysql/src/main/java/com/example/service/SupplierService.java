@@ -21,12 +21,13 @@ public class SupplierService {
 
     @Transactional
     public void add2Suppliers(){
+        final String supplierName = "Abdullah";
 
-        supplierDAO.insertSupplier("ali");
+        supplierDAO.insertSupplier(supplierName);   // << will rolled-back
 
         Supplier s2 = new Supplier();
-        s2.setName("ali");
-        supplierRepo.save(s2);
+        s2.setName(supplierName);
+        supplierRepo.save(s2);      // throws exception
     }
 
     public List<Supplier> listSuppliers(){
