@@ -6,9 +6,9 @@ In this exmples shows when calling spwrap in a service method that is annotated 
 
 open 3 terminal windows;
 
-from first one: `curl http://localhost:8080/api/supplier/add`
-from second one: `curl http://localhost:8080/api/supplier/listDAO`
-and from third one: `curl http://localhost:8080/api/supplier/list`
+From first one: `curl http://localhost:8080/api/supplier/add`   
+From second one: `curl http://localhost:8080/api/supplier/listDAO`    
+And from third one: `curl http://localhost:8080/api/supplier/list`    
 
 you will notice that, setting transaction isolation level on the stored proc method is equivalent to setting it on repository method using spring @Transactional.
 
