@@ -12,7 +12,7 @@ import static javax.ws.rs.core.Response.ok;
 
 // See http://www.mkyong.com/tutorials/jax-rs-tutorials/ for more jax-rs tutorials
 @ApplicationScoped
-@Path("/api/coffee")
+@Path("/coffee")
 public class CoffeeResource {
 
     @Inject

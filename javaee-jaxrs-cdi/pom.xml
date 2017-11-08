@@ -27,12 +27,14 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
 			<version>2.2.1.GA</version>
+            <scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>2.2.1.GA</version>
+            <scope>provided</scope>
 		</dependency>
 
         <dependency>
@@ -65,7 +67,15 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
 	</build>
 
 </project>

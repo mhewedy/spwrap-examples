@@ -3,18 +3,15 @@ package com.mkyong.rest;
 import spwrap.DAO;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
-public class Config {
+@ApplicationPath("/api")
+public class MyApplication extends Application {
 
-    /**
-     * DataSource is defined in the application server
-     */
     @Resource(mappedName = "java:jboss/datasources/TestDS")
     private DataSource dataSource;
 
