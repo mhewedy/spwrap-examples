@@ -1,5 +1,6 @@
 package com.mkyong.rest;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,6 +11,7 @@ import java.util.List;
 import static javax.ws.rs.core.Response.ok;
 
 // See http://www.mkyong.com/tutorials/jax-rs-tutorials/ for more jax-rs tutorials
+@ApplicationScoped
 @Path("/api/coffee")
 public class CoffeeResource {
 
