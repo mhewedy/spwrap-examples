@@ -6,3 +6,5 @@ include 'dbutil-mysql'
 include 'spring-boot-oracle'
 include 'spring-boot-transactions-mysql'
 include 'spring-boot-transactions-mysql2'
+include 'javaee-jaxrs-cdi'
+
